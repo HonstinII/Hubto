@@ -6,6 +6,7 @@ type Translations = {
   [key in Language]: {
     nav: {
       tryNow: string;
+      login: string;
       models: string;
       pricing: string;
       docs: string;
@@ -19,6 +20,9 @@ type Translations = {
       scroll: string;
       getApiKey: string;
       viewDocs: string;
+      dailyQuota: string;
+      quotaRemaining: string;
+      quotaUsed: string;
     };
     models: {
       title: string;
@@ -88,23 +92,65 @@ type Translations = {
       plusCredits: string;
       proCredits: string;
       ultraCredits: string;
+      officialComparison: {
+        go: string;
+        plus: string;
+        pro: string;
+        ultra: string;
+      };
       canUseBoost: string;
+      teamTitle: string;
+      teamFeature1: string;
+      teamFeature2: string;
+      teamFeature3: string;
+      teamFeature4: string;
+      teamFeature5: string;
+      teamFeature6: string;
+      teamBtnContact: string;
+      teamBtnSubscribe: string;
+    };
+    modelsPage: {
+      title: string;
+      description: string;
+      viewAll: string;
+      sortByCapability: string;
+      sortByPrice: string;
+      sortBySpeed: string;
+      showing: string;
+      models: string;
+      noResults: string;
+      backToList: string;
+      performanceMetrics: string;
+      capability: string;
+      speed: string;
+      price: string;
+      pricePerformance: string;
+      capabilities: string;
+      reasoning: string;
+      imageUnderstanding: string;
+      codeAbility: string;
+      chat: string;
+      supported: string;
+      notSupported: string;
     };
   }
 };
 
 const translations: Translations = {
   'zh-TW': {
-    nav: { tryNow: '立即試用', models: '模型中心', pricing: '套餐定價', docs: '文檔博客' },
+    nav: { tryNow: '立即試用', login: '登入', models: '模型中心', pricing: '套餐定價', docs: '文檔博客' },
     hero: {
       badge: '新一代 AI 聚合網關',
       title1: '穩定，才是真正的可用',
       title2: '',
-      desc: '不只解決能不能接入，更解決能不能持續使用。HubTo 讓中國大陸與香港開發者更穩定地使用全球主流 AI 模型。',
+      desc: '不只解決能不能接入，更解決能不能持續使用。讓中國大陸與香港開發者更穩定地使用全球主流 AI 模型。',
       placeholder: '立即試用Hubto API...',
       scroll: '滑動查看更多',
       getApiKey: '獲取 API Key',
-      viewDocs: '查看文檔'
+      viewDocs: '查看文檔',
+      dailyQuota: '每日額度',
+      quotaRemaining: '剩餘',
+      quotaUsed: '已使用',
     },
     models: {
       title: '支援模型',
@@ -127,14 +173,16 @@ const translations: Translations = {
     },
     features: {
       title: '我們的優勢',
-      compareTitle: '為什麼選擇 Hubto？',
+      compareTitle: '為什麼選擇 HubTo？',
       desc: '',
       f1Badge: '聚合接入',
       f1Title: '穩定可達',
       f1Desc: '在中國大陸與香港，穩定接入 Claude Code、GPT、Gemini 等頂級模型。突破區域限制，无需配置VPN KYC 手机号，直接開始開發。',
       f2Badge: '質量保證',
-      f2Title: '多路穩援',
+      f2Title: '突破限額',
       f2Desc: '多通道與備援容量，遇到五小时额度限制、異常或區域波動時自動切換，讓關鍵任務不中斷。',
+      f2Link: '了解更多',
+      f2LinkTo: 'https://docs.hubto.ai/zh-Hant',
       f3Badge: '支付渠道',
       f3Title: '付款無阻',
       f3Desc: '支援支付寶、USDT 與信用卡直付，從個人開發者到小團隊，都能快速完成充值與結算。',
@@ -145,12 +193,13 @@ const translations: Translations = {
       link2: '了解更多',
       link3: '了解更多',
       link4: '查看文檔',
+      f4LinkTo: 'https://docs.hubto.ai/zh-Hant',
       virtualKey: '虛擬密鑰',
       realKey: '真實密鑰'
     },
     cta: {
       title: '準備好開始構建了嗎？',
-      desc: '加入成千上萬透過 Hubto 路由其 AI 請求的開發者行列。',
+      desc: '加入成千上萬透過 HubTo 路由其 AI 請求的開發者行列。',
       button: '獲取 API Key'
     },
     footer: { rights: '版權所有。' },
@@ -172,20 +221,63 @@ const translations: Translations = {
       plusCredits: '2,100 Credits / 月',
       proCredits: '5,500 Credits / 月',
       ultraCredits: '11,500 Credits / 月',
-      canUseBoost: '可使用增值包充值'
+      officialComparison: {
+        go: '相比官方多 2x 使用額度',
+        plus: '相比官方多 2.1x 使用額度',
+        pro: '相比官方多 2.2x 使用額度',
+        ultra: '相比官方多 2.3x 使用額度',
+      },
+      canUseBoost: '可靈活充值credit',
+      teamTitle: '為團隊賦能的 Hubto 企業版',
+      teamFeature1: '多模型靈活切換：支援多模型按需切換，統一扣費。',
+      teamFeature2: '兼容多種工具：適配多種主流編程工具及熱門 Agent 工具。',
+      teamFeature3: '多檔位套餐：提供多檔位套餐，匹配不同使用強度。',
+      teamFeature4: '預算可控：按包月形式訂閱，保證預算可控。',
+      teamFeature5: '平穩運行：多租戶隔離架構，調用高峰期間不排隊。',
+      teamFeature6: '數據安全：企業安全和隱私控制。',
+      teamBtnContact: '聯絡銷售',
+      officialComparisonNote: '注：套餐說明中的相比"官方多 2x 使用額度"意思為：直接調用官方 API，同等金額消費下對比 Hubto 使用額度可獲得最高 2x 的使用額度體驗。',
+      teamBtnSubscribe: '為團隊訂閱'
+    },
+    modelsPage: {
+      title: '模型中心',
+      description: '探索 Hubto 支援的全部 AI 模型，按能力、速度和價格進行比較，找到最適合您需求的模型。',
+      viewAll: '查看全部',
+      sortByCapability: '能力',
+      sortByPrice: '价格',
+      sortBySpeed: '速度',
+      showing: '顯示',
+      models: '個模型',
+      noResults: '沒有找到符合條件的模型',
+      backToList: '返回模型列表',
+      performanceMetrics: '性能評估',
+      capability: '能力',
+      speed: '速度',
+      price: '價格',
+      pricePerformance: '性價比',
+      capabilities: '功能支援',
+      reasoning: '推理能力',
+      imageUnderstanding: '圖片理解',
+      codeAbility: '代碼能力',
+      chat: '對話能力',
+      supported: '支援',
+      notSupported: '不支援'
     }
   },
   'zh-CN': {
-    nav: { tryNow: '立即试用', models: '模型中心', pricing: '套餐定价', docs: '文档博客' },
+    nav: { tryNow: '立即试用', login: '登录', models: '模型中心', pricing: '套餐定价', docs: '文档博客' },
     hero: {
       badge: '新一代 AI 聚合网关',
       title1: '稳定，才是真正的可用',
       title2: '',
-      desc: '不只解决能不能接入，更解决能不能持续使用。HubTo 让中国大陆与香港开发者更稳定地使用全球主流 AI 模型。',
+      desc: '不只解决能不能接入，更解决能不能持续使用。让中国大陆与香港开发者更稳定地使用全球主流 AI 模型。',
       placeholder: '立即试用Hubto API...',
       scroll: '滑动查看更多',
       getApiKey: '获取 API Key',
-      viewDocs: '查看文档'
+      viewDocs: '查看文档',
+      dailyQuota: '每日额度',
+      quotaRemaining: '剩余',
+      quotaUsed: '已使用',
     },
     models: {
       title: '支持模型',
@@ -214,7 +306,7 @@ const translations: Translations = {
       f1Title: '稳定可达',
       f1Desc: '在中国大陆与香港，稳定接入 Claude Code、GPT、Gemini 等顶级模型。突破区域限制，无需配置VPN KYC 手机号，直接开始开发。',
       f2Badge: '质量保证',
-      f2Title: '多路稳援',
+      f2Title: '突破限额',
       f2Desc: '多通道与备援容量，遇到五小时额度限制、异常或区域波动时自动切换，让关键任务不中断。',
       f3Badge: '支付渠道',
       f3Title: '付款无阻',
@@ -253,11 +345,50 @@ const translations: Translations = {
       plusCredits: '2,100 Credits / 月',
       proCredits: '5,500 Credits / 月',
       ultraCredits: '11,500 Credits / 月',
-      canUseBoost: '可使用增值包充值'
+      officialComparison: {
+        go: '相比官方多 2x 使用额度',
+        plus: '相比官方多 2.1x 使用额度',
+        pro: '相比官方多 2.2x 使用额度',
+        ultra: '相比官方多 2.3x 使用额度',
+      },
+      canUseBoost: '可灵活充值credit',
+      teamTitle: '为团队赋能的 Hubto 企业版',
+      teamFeature1: '多模型灵活切换：支持多模型按需切换，统一扣费。',
+      teamFeature2: '兼容多种工具：适配多种主流编程工具及热门 Agent 工具。',
+      teamFeature3: '多档位套餐：提供多档位套餐，匹配不同使用强度。',
+      teamFeature4: '预算可控：按包月形式订阅，保证预算可控。',
+      teamFeature5: '平稳运行：多租户隔离架构，调用高峰期间不排队。',
+      teamFeature6: '数据安全：企业安全和隐私控制。',
+      teamBtnContact: '联系销售',
+      teamBtnSubscribe: '为团队订阅'
+    },
+    officialComparisonNote: '注：套餐说明中的相比"官方多 2x 使用额度"意思为：直接调用官方 API，同等金额消费下对比 Hubto 使用额度可获得最高 2x 的使用额度体验。',
+    modelsPage: {
+      title: '模型中心',
+      viewAll: '查看全部',
+      sortByCapability: '能力',
+      sortByPrice: '价格',
+      sortBySpeed: '速度',
+      showing: '显示',
+      models: '个模型',
+      noResults: '没有找到符合条件的模型',
+      backToList: '返回模型列表',
+      performanceMetrics: '性能评估',
+      capability: '能力',
+      speed: '速度',
+      price: '价格',
+      pricePerformance: '性价比',
+      capabilities: '功能支持',
+      reasoning: '推理能力',
+      imageUnderstanding: '图片理解',
+      codeAbility: '代码能力',
+      chat: '对话能力',
+      supported: '支持',
+      notSupported: '不支持'
     }
   },
   'en': {
-    nav: { tryNow: 'Try now', models: 'Models', pricing: 'Pricing', docs: 'Docs & Blog' },
+    nav: { tryNow: 'Try now', login: 'Login', models: 'Models', pricing: 'Pricing', docs: 'Docs & Blog' },
     hero: {
       badge: 'The Next-Gen AI Gateway',
       title1: 'Stability is True Usability',
@@ -266,7 +397,10 @@ const translations: Translations = {
       placeholder: 'Try Hubto API now...',
       scroll: 'Scroll to learn more',
       getApiKey: 'Get API Key',
-      viewDocs: 'View Docs'
+      viewDocs: 'View Docs',
+      dailyQuota: 'Daily Quota',
+      quotaRemaining: 'Remaining',
+      quotaUsed: 'Used',
     },
     models: {
       title: "Supported Models",
@@ -334,7 +468,47 @@ const translations: Translations = {
       plusCredits: '2,100 Credits / mo',
       proCredits: '5,500 Credits / mo',
       ultraCredits: '11,500 Credits / mo',
-      canUseBoost: 'Can use boost packages'
+      officialComparison: {
+        go: '2x more usage than official',
+        plus: '2.1x more usage than official',
+        pro: '2.2x more usage than official',
+        ultra: '2.3x more usage than official',
+      },
+      canUseBoost: 'Flexible credit recharge',
+      teamTitle: 'Empower your team with Hubto for enterprise',
+      teamFeature1: 'Flexible model switching: Support on-demand model switching with unified billing.',
+      teamFeature2: 'Compatible with various tools: Works with mainstream programming and popular Agent tools.',
+      teamFeature3: 'Multiple plan tiers: Multiple subscription tiers matching different usage intensity.',
+      teamFeature4: 'Budget control: Monthly subscription for predictable budget management.',
+      teamFeature5: 'Smooth operation: Multi-tenant isolation architecture, no queuing during peak usage.',
+      teamFeature6: 'Data security: Enterprise-level security and privacy controls.',
+      teamBtnContact: 'Contact sales',
+      teamBtnSubscribe: 'Subscribe your team',
+      officialComparisonNote: 'Note: "2x more usage than official" in the plan descriptions means that compared to directly calling official APIs, you can get up to 2x more usage experience with Hubto at the same cost.',
+    },
+    modelsPage: {
+      title: 'Model Center',
+      description: 'Explore all AI models supported by Hubto, compare by capability, speed and price, and find the best model for your needs.',
+      viewAll: 'View all',
+      sortByCapability: 'Capability',
+      sortByPrice: 'Price Performance',
+      sortBySpeed: 'Speed',
+      showing: 'Showing',
+      models: 'models',
+      noResults: 'No models found matching your criteria',
+      backToList: 'Back to model list',
+      performanceMetrics: 'Performance Metrics',
+      capability: 'Capability',
+      speed: 'Speed',
+      price: 'Price',
+      pricePerformance: 'Price Performance',
+      capabilities: 'Capabilities',
+      reasoning: 'Reasoning',
+      imageUnderstanding: 'Image Understanding',
+      codeAbility: 'Code Ability',
+      chat: 'Chat',
+      supported: 'Supported',
+      notSupported: 'Not Supported'
     }
   }
 };

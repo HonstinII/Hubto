@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BlinkUIProvider, Toaster } from '@blinkdotnew/ui'
 import { Root, HomePage } from './App'
 import { PricingPage } from './pages/PricingPage'
+import { ModelsPage } from './pages/ModelsPage'
+import { ModelDetailPage } from './pages/ModelDetailPage'
 import './index.css'
 
 const rootRoute = createRootRoute({
@@ -23,7 +25,19 @@ const pricingRoute = createRoute({
   component: PricingPage
 })
 
-const routeTree = rootRoute.addChildren([indexRoute, pricingRoute])
+const modelsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/models',
+  component: ModelsPage
+})
+
+const modelDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/models/$id',
+  component: ({ params }) => <ModelDetailPage id={params.id} />
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, pricingRoute, modelsRoute, modelDetailRoute])
 const router = createRouter({ routeTree })
 
 declare module '@tanstack/react-router' {

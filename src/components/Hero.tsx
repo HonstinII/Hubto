@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown, Check, Plus } from 'lucide-react';
+import { ArrowRight, ChevronDown, Check, Plus, Info } from 'lucide-react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@blinkdotnew/ui';
 import { useLanguage } from '../lib/i18n';
 
@@ -30,7 +30,7 @@ export function Hero() {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <section className="mx-auto flex min-h-[92vh] w-full max-w-6xl items-center justify-center px-4 pb-24 pt-28 md:pb-32 md:pt-32">
+    <section className="mx-auto flex min-h-[92vh] w-full max-w-6xl items-center justify-center px-4 pb-24 pt-28 md:pb-32 md:pt-32" style={{ marginTop: '72px', marginBottom: '72px' }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -44,11 +44,11 @@ export function Hero() {
           <span className="text-white">{t.hero.title2}</span>
         </h1>
 
-        <p className="max-w-2xl text-center text-sm font-light leading-7 text-white/66 md:text-[1.05rem] md:leading-[1.85]">
+        <p className="max-w-2xl text-center text-sm font-medium leading-7 text-white md:text-[1.05rem] md:leading-[1.85]">
           {t.hero.desc}
         </p>
 
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-6">
           <button className="rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-transform hover:scale-105">
             {t.hero.getApiKey}
           </button>
@@ -87,9 +87,9 @@ export function Hero() {
                   <DropdownMenuTrigger className="flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-white/80 transition-colors hover:bg-white/10 outline-none backdrop-blur-md">
                     <Plus className="h-5 w-5" />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="min-w-[150px] border-white/10 bg-black/60 text-zinc-200 backdrop-blur-xl">
-                    <DropdownMenuItem className="cursor-pointer py-2.5 hover:bg-white/10">上传文件</DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer py-2.5 hover:bg-white/10">上传图片</DropdownMenuItem>
+                  <DropdownMenuContent align="start" className="min-w-[150px] rounded-[16px] bg-[#1a1a1e] border border-white/10 shadow-xl overflow-hidden z-20">
+                    <DropdownMenuItem className="cursor-pointer py-2.5 px-4 text-sm text-white/70 hover:bg-[#212124] rounded-[16px]">上传文件</DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer py-2.5 px-4 text-sm text-white/70 hover:bg-[#212124] rounded-[16px]">上传图片</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
@@ -100,12 +100,16 @@ export function Hero() {
                     {selectedModel.name}
                     <ChevronDown className="h-4 w-4 opacity-60" />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="min-w-[180px] border-white/10 bg-black/60 text-zinc-200 backdrop-blur-xl">
+                  <DropdownMenuContent align="end" className="min-w-[180px] rounded-[16px] bg-[#1a1a1e] border border-white/10 shadow-xl overflow-hidden z-20">
                     {MODELS.map((model) => (
                       <DropdownMenuItem
                         key={model.id}
                         onClick={() => setSelectedModel(model)}
-                        className="flex cursor-pointer items-center justify-between py-3 hover:bg-[#19191a] hover:text-[#ffffff]"
+                        className={`flex cursor-pointer items-center justify-between py-2.5 px-4 text-sm transition-colors ${
+                          selectedModel.id === model.id
+                            ? 'text-white bg-[#212124] rounded-[16px]'
+                            : 'text-white/70 hover:bg-[#212124] rounded-[16px]'
+                        }`}
                       >
                         {model.name}
                         {selectedModel.id === model.id && <Check className="h-4 w-4 text-violet-400" />}
@@ -113,6 +117,32 @@ export function Hero() {
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
+
+                <div className="relative group">
+                  <div className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2.5 text-sm text-white/80 backdrop-blur-md">
+                    <svg className="w-5 h-5" viewBox="0 0 36 36">
+                      <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+                      <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#9d82f5" strokeWidth="3" strokeDasharray="100, 100" strokeDashoffset="0" strokeLinecap="round" />
+                    </svg>
+                    <span className="text-sm font-medium">5/5</span>
+                  </div>
+                  <div className="absolute bottom-full right-0 mb-3 hidden group-hover:block">
+                    <div className="w-48 rounded-[16px] bg-[#1a1a1e] border border-white/10 p-4 shadow-xl overflow-hidden z-20">
+                      <p className="text-xs font-medium text-white/70 mb-3">{t.hero.dailyQuota}</p>
+                      <div className="flex items-center justify-between text-xs text-white/70 mb-2">
+                        <span>{t.hero.quotaRemaining}</span>
+                        <span className="text-emerald-400">5</span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs text-white/70">
+                        <span>{t.hero.quotaUsed}</span>
+                        <span className="text-white/80">0</span>
+                      </div>
+                    </div>
+                    <div className="absolute top-full right-4 -mt-px">
+                      <div className="w-2 h-2 bg-[#1a1a1e] border-r border-b border-white/10 transform rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
 
                 <button
                   className={`flex h-11 w-11 items-center justify-center rounded-full transition-all backdrop-blur-md ${

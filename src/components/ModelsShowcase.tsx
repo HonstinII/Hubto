@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Flame, MessageSquare, Type, Image as ImageIcon, FileText } from 'lucide-react'
+import { Flame, MessageSquare, Type, Image as ImageIcon, FileText, ArrowRight } from 'lucide-react'
 import { useLanguage } from '../lib/i18n'
+import { Link } from '@tanstack/react-router'
 
 const modelsData = [
   {
@@ -8,7 +9,7 @@ const modelsData = [
     desc: 'Google 最強大、最通用的模型，專為處理高度複雜的任務和多模態輸入而構建。',
     tags: ['LLM', 'Multimodal'],
     context: '2M',
-    logo: 'https://i.postimg.cc/C18qB3fF/Mask-group.png',
+    logo: 'https://i.postimg.cc/hjWxpXwS/gemini-logo-svgstack-com-37141776760072.png',
     isHot: false
   },
   {
@@ -24,7 +25,7 @@ const modelsData = [
     desc: 'OpenAI 的旗艦模型，具備先進的代理工作流，適用於推理、編程和創意生成。',
     tags: ['LLM'],
     context: '128K',
-    logo: 'https://i.postimg.cc/mrtMRzLy/openai-light-1.png',
+    logo: 'https://i.postimg.cc/k4QSZn3W/white-chatgpt-logo-svgstack-com-36921776760120.png',
     isHot: false
   },
   {
@@ -129,15 +130,14 @@ export function ModelsShowcase() {
   return (
     <section id="models" className="relative overflow-hidden bg-transparent pt-16 md:pt-24 pb-6 md:pb-10">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-xl space-y-4 text-left">
+        <div className="flex items-center justify-between mb-12">
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl md:leading-[1.08]" style={{ fontSize: '32px' }}>
             {t.models.title}
           </h2>
-          {t.models.desc && (
-            <p className="text-base font-light leading-8 text-white/62 md:text-lg">
-              {t.models.desc}
-            </p>
-          )}
+          <Link to="/models" className="text-sm font-medium text-white/50 hover:text-white/80 transition-colors inline-flex items-center gap-1.5 shrink-0">
+            {t.modelsPage.viewAll}
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
 

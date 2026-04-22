@@ -9,14 +9,23 @@ function FeatureCard({
   description,
   className = '',
   linkText = 'Learn more',
+  linkTo = '/models',
   image,
+  external,
 }: {
   title: string;
   description: React.ReactNode;
   className?: string;
   linkText?: string;
+  linkTo?: string;
   image?: React.ReactNode;
+  external?: boolean;
 }) {
+  const LinkComponent = external ? 'a' : Link;
+  const linkProps = external
+    ? { href: linkTo, target: '_blank', rel: 'noopener noreferrer' }
+    : { to: linkTo };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 26 }}
@@ -39,10 +48,10 @@ function FeatureCard({
           {description}
         </p>
         <div>
-          <Link to="/#models" className="text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors inline-flex items-center gap-1.5">
+          <LinkComponent {...linkProps} className="text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors inline-flex items-center gap-1.5">
             {linkText}
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-          </Link>
+          </LinkComponent>
         </div>
       </div>
     </motion.article>
@@ -56,8 +65,8 @@ export function Features() {
     'https://i.postimg.cc/rwhWvCkV/Frame1.png',
     'https://i.postimg.cc/YCSLfGmR/1Frame.png',
     'https://i.postimg.cc/Bvr80m7M/zhipu-1.png',
-    'https://i.postimg.cc/mrtMRzLy/openai-light-1.png',
-    'https://i.postimg.cc/C18qB3fF/Mask-group.png',
+    'https://i.postimg.cc/k4QSZn3W/white-chatgpt-logo-svgstack-com-36921776760120.png',
+    'https://i.postimg.cc/hjWxpXwS/gemini-logo-svgstack-com-37141776760072.png',
     'https://i.postimg.cc/W4CZ4NtV/Vector.png',
     'https://i.postimg.cc/rp1TDgFj/V1ector.png'
   ];
@@ -111,10 +120,10 @@ export function Features() {
                         <img src="https://i.postimg.cc/W4CZ4NtV/Vector.png" alt="Claude" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden p-2.5">
-                        <img src="https://i.postimg.cc/mrtMRzLy/openai-light-1.png" alt="GPT" className="w-full h-full object-contain" />
+                        <img src="https://i.postimg.cc/k4QSZn3W/white-chatgpt-logo-svgstack-com-36921776760120.png" alt="GPT" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden p-2.5">
-                        <img src="https://i.postimg.cc/C18qB3fF/Mask-group.png" alt="Gemini" className="w-full h-full object-contain" />
+                        <img src="https://i.postimg.cc/hjWxpXwS/gemini-logo-svgstack-com-37141776760072.png" alt="Gemini" className="w-full h-full object-contain" />
                       </div>
                     </div>
                   </div>
@@ -126,6 +135,8 @@ export function Features() {
               title={t.features.f2Title}
               description={t.features.f2Desc}
               linkText={t.features.link2}
+              linkTo="https://docs.hubto.ai/zh-Hant"
+              external
               className="h-full"
               image={
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] pointer-events-none">
@@ -176,6 +187,7 @@ export function Features() {
               title={t.features.f3Title}
               description={t.features.f3Desc}
               linkText={t.features.link3}
+              linkTo="/pricing"
               className="h-full"
               image={
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] flex justify-center pointer-events-none scale-[0.7] origin-center">
@@ -222,6 +234,8 @@ export function Features() {
               title={t.features.f4Title}
               description={t.features.f4Desc}
               linkText={t.features.link4}
+              linkTo="https://docs.hubto.ai/zh-Hant"
+              external
               className="h-full"
               image={
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] pointer-events-none scale-[0.7] origin-center">
