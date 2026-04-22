@@ -38,8 +38,11 @@ const modelDetailRoute = createRoute({
 })
 
 const routeTree = rootRoute.addChildren([indexRoute, pricingRoute, modelsRoute, modelDetailRoute])
-const router = createRouter({ routeTree })
-
+const router = createRouter({ 
+  routeTree, 
+  // 重点：必须加上这一行，告诉路由你在子目录下运行
+  basepath: '/Hubto/', 
+})
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router
