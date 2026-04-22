@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: '/Hubto/',
+  base: '/https://github.com/HonstinII/Hubto',
   plugins: [react()],
   resolve: {
     alias: {
