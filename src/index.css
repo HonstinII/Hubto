@@ -21,9 +21,8 @@
      Global Scrollbar Lock - Prevent Layout Shift
      ======================================== */
   
-  /* Only use scrollbar-gutter to reserve space, don't force scroll */
+  /* Remove scrollbar-gutter to prevent right side blank space */
   html {
-    scrollbar-gutter: stable !important;
     overflow-x: hidden;
   }
   
