@@ -7,6 +7,7 @@ type Translations = {
     nav: {
       tryNow: string;
       login: string;
+      logout: string;
       models: string;
       pricing: string;
       docs: string;
@@ -38,6 +39,7 @@ type Translations = {
     };
     agentCLI: {
       title: string;
+      viewAll: string;
       hermesDesc: string;
       openClawDesc: string;
       claudeCodeDesc: string;
@@ -68,6 +70,7 @@ type Translations = {
     };
     cta: {
       title: string;
+      viewAll: string;
       desc: string;
       button: string;
     };
@@ -138,7 +141,7 @@ type Translations = {
 
 const translations: Translations = {
   'zh-TW': {
-    nav: { tryNow: '立即試用', login: '登入', models: '模型中心', pricing: '套餐定價', docs: '文檔博客' },
+    nav: { tryNow: '立即試用', login: '登入', logout: '登出', models: '模型中心', pricing: '套餐定價', docs: '文檔博客' },
     hero: {
       badge: '新一代 AI 聚合網關',
       title1: '穩定，才是真正的可用',
@@ -166,6 +169,7 @@ const translations: Translations = {
     },
     agentCLI: {
       title: '支援 Agent CLI',
+      viewAll: '查看全部',
       hermesDesc: '與您共同成長的自主代理',
       openClawDesc: '開源的網頁端代理框架',
       claudeCodeDesc: 'Anthropic 出品的代理編程助手',
@@ -188,7 +192,7 @@ const translations: Translations = {
       f3Desc: '支援支付寶、USDT 與信用卡直付，從個人開發者到小團隊，都能快速完成充值與結算。',
       f4Badge: '數據看板',
       f4Title: '成本可視',
-      f4Desc: '每次請求、每種模型與每筆 Token 消耗清楚可追蹤，方便控費、對帳與持續優化。',
+      f4Desc: '每次請求、每種模型與每筆 Credit 消耗清楚可追蹤，方便控費、對帳與持續優化。',
       link1: '瀏覽全部',
       link2: '了解更多',
       link3: '了解更多',
@@ -199,6 +203,7 @@ const translations: Translations = {
     },
     cta: {
       title: '準備好開始構建了嗎？',
+      viewAll: '查看全部',
       desc: '加入成千上萬透過 HubTo 路由其 AI 請求的開發者行列。',
       button: '獲取 API Key'
     },
@@ -227,7 +232,7 @@ const translations: Translations = {
         pro: '相比官方多 2.2x 使用額度',
         ultra: '相比官方多 2.3x 使用額度',
       },
-      canUseBoost: '可靈活充值credit',
+      canUseBoost: '可靈活充值Credit',
       teamTitle: '為團隊賦能的 Hubto 企業版',
       teamFeature1: '多模型靈活切換：支援多模型按需切換，統一扣費。',
       teamFeature2: '兼容多種工具：適配多種主流編程工具及熱門 Agent 工具。',
@@ -236,7 +241,7 @@ const translations: Translations = {
       teamFeature5: '平穩運行：多租戶隔離架構，調用高峰期間不排隊。',
       teamFeature6: '數據安全：企業安全和隱私控制。',
       teamBtnContact: '聯絡銷售',
-      officialComparisonNote: '注：套餐說明中的相比"官方多 2x 使用額度"意思為：直接調用官方 API，同等金額消費下對比 Hubto 使用額度可獲得最高 2x 的使用額度體驗。',
+      officialComparisonNote: '注：相比"官方多 2x 使用額度"意思為：同等金額消費下對比Hubto 使用額度可獲得直接調用官方 API， 最高 2x 的使用額度體驗。',
       teamBtnSubscribe: '為團隊訂閱'
     },
     modelsPage: {
@@ -265,7 +270,7 @@ const translations: Translations = {
     }
   },
   'zh-CN': {
-    nav: { tryNow: '立即试用', login: '登录', models: '模型中心', pricing: '套餐定价', docs: '文档博客' },
+    nav: { tryNow: '立即试用', login: '登录', logout: '登出', models: '模型中心', pricing: '套餐定价', docs: '文档博客' },
     hero: {
       badge: '新一代 AI 聚合网关',
       title1: '稳定，才是真正的可用',
@@ -293,6 +298,7 @@ const translations: Translations = {
     },
     agentCLI: {
       title: '支持 Agent CLI',
+      viewAll: '查看全部',
       hermesDesc: '与您共同成长的自主代理',
       openClawDesc: '开源的网页端代理框架',
       claudeCodeDesc: 'Anthropic 出品的代理编程助手',
@@ -323,7 +329,8 @@ const translations: Translations = {
     },
     cta: {
       title: '准备好开始构建了吗？',
-      desc: '加入成千上万通过 Hubto 路由其 AI 请求的开发者行列。',
+      viewAll: '查看全部',
+      desc: '加入成千上万透过 HubTo 路由其 AI 请求的开发者行列。',
       button: '获取 API Key'
     },
     footer: { rights: '版权所有。' },
@@ -351,7 +358,7 @@ const translations: Translations = {
         pro: '相比官方多 2.2x 使用额度',
         ultra: '相比官方多 2.3x 使用额度',
       },
-      canUseBoost: '可灵活充值credit',
+      canUseBoost: '可灵活充值Credit',
       teamTitle: '为团队赋能的 Hubto 企业版',
       teamFeature1: '多模型灵活切换：支持多模型按需切换，统一扣费。',
       teamFeature2: '兼容多种工具：适配多种主流编程工具及热门 Agent 工具。',
@@ -388,7 +395,7 @@ const translations: Translations = {
     }
   },
   'en': {
-    nav: { tryNow: 'Try now', login: 'Login', models: 'Models', pricing: 'Pricing', docs: 'Docs & Blog' },
+    nav: { tryNow: 'Try now', login: 'Login', logout: 'Logout', models: 'Models', pricing: 'Pricing', docs: 'Docs & Blog' },
     hero: {
       badge: 'The Next-Gen AI Gateway',
       title1: 'Stability is True Usability',
@@ -416,6 +423,7 @@ const translations: Translations = {
     },
     agentCLI: {
       title: 'Supported Agent CLIs',
+      viewAll: 'View all',
       hermesDesc: 'An autonomous agent that grows with you',
       openClawDesc: 'Open source web-based agent framework',
       claudeCodeDesc: 'Agentic coding assistant by Anthropic',
@@ -445,8 +453,9 @@ const translations: Translations = {
       realKey: 'Real Key'
     },
     cta: {
-      title: 'Ready to build?',
-      desc: 'Join thousands of developers routing their AI requests through Hubto.',
+      title: 'Ready to Start Building?',
+      viewAll: 'View all',
+      desc: 'Join thousands of developers routing their AI requests through HubTo.',
       button: 'Get API Key'
     },
     footer: { rights: 'All rights reserved.' },

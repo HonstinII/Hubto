@@ -1,23 +1,19 @@
-import { motion } from 'framer-motion';
 import { useLanguage } from '../lib/i18n';
+import { useAuth } from '../lib/AuthContext';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@blinkdotnew/ui';
 import { Globe, Check } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
 
 export function Navbar() {
   const { lang, setLang, t } = useLanguage();
+  const { isLoggedIn, login, logout } = useAuth();
 
   return (
-    <motion.nav
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="flex items-center justify-between px-6 py-4 lg:px-12 w-full max-w-7xl mx-auto"
-    >
+    <nav className="flex items-center justify-between px-6 py-4 lg:px-12 w-full max-w-7xl mx-auto">
       <div className="flex items-center gap-12">
         <div className="flex items-center gap-2 cursor-pointer">
           <Link to="/" className="flex items-center gap-1">
-            <img src="https://i.postimg.cc/MTjk6sb9/logo-single-(1).jpg" alt="HubTo" className="h-8 w-auto rounded-lg" />
+            <img src="https://i.postimg.cc/KYVjfVRw/logo-single-(1)-1.png" alt="HubTo" className="h-8 w-auto rounded-lg" />
             <span className="text-[21px] font-semibold tracking-tight text-white">HubTo</span>
           </Link>
         </div>
@@ -30,8 +26,8 @@ export function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors text-sm text-zinc-300 outline-none">
+        <DropdownMenu modal={false}>
+        <DropdownMenuTrigger className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors text-sm text-zinc-300 outline-none">
             <Globe className="w-4 h-4" />
             <span>
               {lang === 'zh-TW' ? '繁體中文' : lang === 'zh-CN' ? '简体中文' : 'English'}
@@ -50,13 +46,19 @@ export function Navbar() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <button className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/20">
+        <Link
+          to="/login"
+          className="rounded-full px-4 py-2 text-sm font-medium backdrop-blur-md transition-all border border-white/20 bg-white/10 text-white hover:bg-white/20"
+        >
           {t.nav.login}
-        </button>
-        <button className="px-5 py-2 text-sm font-medium rounded-full bg-white text-black hover:bg-zinc-200 transition-colors">
+        </Link>
+        <button
+          onClick={isLoggedIn ? logout : login}
+          className="px-5 py-2 text-sm font-medium rounded-full bg-white text-black hover:bg-zinc-200 transition-colors"
+        >
           {t.nav.tryNow}
         </button>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

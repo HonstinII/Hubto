@@ -67,7 +67,7 @@ export function ModelDetailPage({ id }: { id: string }) {
   if (!model) {
     return (
       <div className="min-h-screen bg-black text-white font-sans">
-        <div className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
+        <div className="fixed-navbar fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
           <Navbar />
         </div>
         <div className="relative pt-32 pb-24 px-6 max-w-[1200px] mx-auto z-10 text-center">
@@ -103,7 +103,7 @@ export function ModelDetailPage({ id }: { id: string }) {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white/20">
-      <div className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
+      <div className="fixed-navbar fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
         <Navbar />
       </div>
 

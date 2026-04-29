@@ -159,9 +159,6 @@ export function Features() {
                       </div>
                     </div>
 
-                    {/* Arrow/Switch Icon */}
-                    <div className="absolute left-[20px] top-[50%] -translate-y-1/2 h-8 w-[1px] border-l-2 border-dashed border-white/20" />
-                    
                     {/* Backup Channel */}
                     <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 backdrop-blur-md opacity-70">
                       <div className="flex items-center justify-between">

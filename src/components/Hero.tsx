@@ -52,9 +52,9 @@ export function Hero() {
           <button className="rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-transform hover:scale-105">
             {t.hero.getApiKey}
           </button>
-          <button className="rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-105">
+          <a href="https://docs.hubto.ai/cn" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-105">
             {t.hero.viewDocs}
-          </button>
+          </a>
         </div>
 
         <motion.div
@@ -83,7 +83,7 @@ export function Hero() {
 
             <div className="flex items-center justify-between gap-3 px-2 pt-2">
               <div className="flex items-center gap-3">
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                   <DropdownMenuTrigger className="flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-white/80 transition-colors hover:bg-white/10 outline-none backdrop-blur-md">
                     <Plus className="h-5 w-5" />
                   </DropdownMenuTrigger>
@@ -95,7 +95,7 @@ export function Hero() {
               </div>
 
               <div className="flex items-center gap-3">
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                   <DropdownMenuTrigger className="flex items-center gap-2 rounded-full bg-white/5 px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-[#19191a] outline-none backdrop-blur-md md:text-base">
                     {selectedModel.name}
                     <ChevronDown className="h-4 w-4 opacity-60" />

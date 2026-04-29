@@ -1,0 +1,8 @@
+.breathing-light-container {
+  position: relative;
+  pointer-events: none;
+}
+
+.breathing-light-container canvas {
+  display: block;
+}

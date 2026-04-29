@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
 import { useLanguage } from '../lib/i18n';
 
 export function AgentCLIShowcase() {
@@ -33,11 +35,15 @@ export function AgentCLIShowcase() {
 
   return (
     <section className="relative overflow-hidden bg-transparent pt-16 md:pt-28 pb-16 md:pb-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-xl space-y-4 text-left">
+      <div className="mx-auto px-6" style={{ width: '1104px' }}>
+        <div className="flex items-center justify-between mb-12">
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl md:leading-[1.08]" style={{ fontSize: '32px' }}>
             {t.agentCLI.title}
           </h2>
+          <Link to="/agents" className="text-sm font-medium text-white/50 hover:text-white/80 transition-colors inline-flex items-center gap-1.5 shrink-0">
+            {t.agentCLI.viewAll}
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -7,6 +7,11 @@ import { Root, HomePage } from './App'
 import { PricingPage } from './pages/PricingPage'
 import { ModelsPage } from './pages/ModelsPage'
 import { ModelDetailPage } from './pages/ModelDetailPage'
+import { LoginPage } from './pages/LoginPage'
+import { RegisterPage } from './pages/RegisterPage'
+import { DashboardPage } from './pages/DashboardPage'
+import { ApiManagementPageWrapper } from './pages/ApiManagementPage'
+import { TestAPIPageWrapper } from './pages/TestAPIPage'
 import './index.css'
 
 const rootRoute = createRootRoute({
@@ -37,7 +42,37 @@ const modelDetailRoute = createRoute({
   component: ({ params }) => <ModelDetailPage id={params.id} />
 })
 
-const routeTree = rootRoute.addChildren([indexRoute, pricingRoute, modelsRoute, modelDetailRoute])
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/login',
+  component: LoginPage
+})
+
+const registerRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/register',
+  component: RegisterPage
+})
+
+const dashboardRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/dashboard',
+  component: DashboardPage
+})
+
+const apiManagementRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/api-management',
+  component: ApiManagementPageWrapper
+})
+
+const testAPIRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/test-api',
+  component: TestAPIPageWrapper
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, pricingRoute, modelsRoute, modelDetailRoute, loginRoute, registerRoute, dashboardRoute, apiManagementRoute, testAPIRoute])
 const router = createRouter({ routeTree, basepath: import.meta.env.BASE_URL })
 
 declare module '@tanstack/react-router' {

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../lib/i18n';
 
@@ -7,12 +6,7 @@ export function CTA() {
 
   return (
     <section className="relative mx-auto flex min-h-[72vh] w-full max-w-6xl items-center justify-center px-6 py-28 md:py-40">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="relative z-10 max-w-4xl text-center"
-      >
+      <div className="relative z-10 max-w-4xl text-center">
         <div className="flex flex-col items-center space-y-8">
           <h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl md:leading-[1.08]">
             {t.cta.title}
@@ -29,7 +23,7 @@ export function CTA() {
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

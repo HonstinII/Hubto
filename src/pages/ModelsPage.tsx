@@ -168,7 +168,7 @@ export function ModelsPage() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white/20">
-      <div className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
+      <div className="fixed-navbar fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
         <Navbar />
       </div>
 
